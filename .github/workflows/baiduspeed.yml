@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-        BAIDU_COOKIE: ${{ secrets.BAIDU_COOKIE }}
         TZ: Asia/shanghai
     steps:
       - name: Checkout
@@ -24,9 +23,8 @@ jobs:
         run: |
           npm install
       - name: '运行 【百度极速】'
-        if: env.BAIDU_COOKIE
         run: |
-          node Task/baidu_speed.js
+          node Task/BBB.js
         env:
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
