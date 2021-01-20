@@ -30,7 +30,7 @@ hostname = bububao.duoshoutuan.com,
 
 const $ = new Env('步步寶')
 let notice = ''
-let CookieVal = $.getdata('bbb_ck')
+let CookieVal = '{"imei":"868875031364587","ini":"24","version":"18","tokenstr":"BE0D40F5700DAD3179EDF5A1C525923G1611051569","store":"0","platform":"1","Content-Type":"application/x-www-form-urlencoded","User-Agent":"Dalvik/2.1.0(Linux;U;Android7.0;M760Build/NRD90M)","Host":"bububao.duoshoutuan.com","Connection":"Keep-Alive","Accept-Encoding":"gzip","Cookie":"PHPSESSID=qpe4ct5s3820qor8qv7ocsbjc7","Content-Length":"0"}'
 
 if ($.isNode()) {
       console.log(`============ 脚本执行-国际标准时间(UTC)：${new Date().toLocaleString()}  =============\n`)
@@ -44,7 +44,7 @@ now = new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8
 if (typeof $request !== 'undefined') {
    if ($request && $request.method != `OPTIONS` && $request.url.indexOf('user/profile') != -1) {
      const CookieVal = JSON.stringify($request.headers)
-if(CookieVal)$.setdata(CookieVal,'bbb_ck')
+if(CookieVal)$.setdata(CookieVal,'{"imei":"868875031364587","ini":"24","version":"18","tokenstr":"BE0D40F5700DAD3179EDF5A1C525923G1611051569","store":"0","platform":"1","Content-Type":"application/x-www-form-urlencoded","User-Agent":"Dalvik/2.1.0(Linux;U;Android7.0;M760Build/NRD90M)","Host":"bububao.duoshoutuan.com","Connection":"Keep-Alive","Accept-Encoding":"gzip","Cookie":"PHPSESSID=qpe4ct5s3820qor8qv7ocsbjc7","Content-Length":"0"}')
      $.log(`CookieVal:${CookieVal}`)
      $.msg($.name,"获取Cookie成功")
      $.done()
