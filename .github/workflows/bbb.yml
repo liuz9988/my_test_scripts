@@ -1,5 +1,5 @@
 
-name: 步步宝
+name: 步步宝2
 on:
   workflow_dispatch:
   schedule:
@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
+        BBB_COOKIE: ${{ secrets.BBB_COOKIE }}
         TZ: Asia/shanghai
     steps:
       - name: Checkout
@@ -22,7 +23,10 @@ jobs:
       - name: npm install
         run: |
           npm install
+          wget -O Task/BBB.js https://raw.githubusercontent.com/adwktt/adwktt/master/BBB.js
+          sed -i "s/let CookieVal = \$.getdata('bbb_ck')/let CookieVal = process.env.BBB_COOKIE.split();/g" Task/BBB.js
       - name: '运行 【步步宝】'
+        if: env.BBB_COOKIE
         run: |
           node Task/BBB.js
         env:
