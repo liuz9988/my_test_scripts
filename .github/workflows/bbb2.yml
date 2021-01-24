@@ -1,5 +1,5 @@
 
-name: 步步宝
+name: 步步宝2
 on:
   workflow_dispatch:
   schedule:
