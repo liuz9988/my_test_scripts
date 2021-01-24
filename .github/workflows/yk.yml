@@ -1,11 +1,9 @@
-# 快手视频刷金币测试，抓包获取secrets
 
 name: 一刻
-
 on:
   workflow_dispatch:
   schedule:
-     - cron: '0,30 0-12 * * *'
+     - cron: '0 8-23/2 * * *'
   watch:
     types: started
 jobs:
@@ -13,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     env:
+        YK_COOKIE: ${{ secrets.YK_COOKIE }}
         TZ: Asia/shanghai
     steps:
       - name: Checkout
@@ -24,7 +23,10 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【一刻视频】'
+          wget -O Task/yk.js https://raw.githubusercontent.com/adwktt/adwktt/master/yk.js
+          sed -i "s/let CookieVal = \$.getdata('yk_ck')/let CookieVal = process.env.YK_COOKIE.split();/g" Task/yk.js
+      - name: '运行 【一刻】'
+        if: env.YK_COOKIE
         run: |
           node Task/yk.js
         env:
