@@ -23,7 +23,7 @@ jobs:
       - name: npm install
         run: |
           npm install
-          wget -O Task/kuaishou.js https://raw.githubusercontent.com/Sunert/Scripts/master/Task/kuaishou.js
+          wget -O Task/kuaishou.js https://raw.githubusercontent.com/Sunert/Script/master/Task/kuaishou.js
       - name: 运行 【快手视频签到】
         if: env.KS_TOKEN
         run: |
